@@ -1,19 +1,26 @@
-import React from "react";
+import React,{useState} from "react";
 import {BsFacebook} from 'react-icons/bs'
 import {FcGoogle} from 'react-icons/fc';
 import axios from "axios";  
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 
 
 const Login = ()=>{
-     // const router = useRouter();   
+     const router = useRouter();
+     const [username,setUsername]=useState('');
+     const [email,setEmail]=useState('');
+     const [password,setPassword]=useState('');     
+     const [email2,setEmail2]=useState('');
+     const [password2,setPassword2]=useState('');     
      const fetchData = async (URL) => {
           const data={
-               "username":"Prajwal2 Shah",
-               "email":"prajwalsha2h.2003@gmail.com",
-               "password":"2122373"
+               // "username":"Prajwaasdasdsadsdfasdasdlasdsad1305 Shah",
+               // "email":"prajwalshsdadsda2hasdasd13asdasd05.2003@gmail.com",
+               // "password":"21223asdfadasd7dfadf3asd1305"
+               username,email,password
           }
+          console.log(data);
           try {
             await axios({
               method: 'POST',
@@ -23,7 +30,32 @@ const Login = ()=>{
               console.log(res.data);
               if(res.data.success == "true"){
                console.log("success");
-                    // router.push('/');
+                    router.push('/');
+              }
+            });
+          } 
+          catch (err) {
+            console.log(err)
+          }
+     }
+     const fetchData2 = async (URL) => {
+          const data={
+               // "username":"Prajwaasdasdsadsdfasdasdlasdsad1305 Shah",
+               // "email":"prajwalshsdadsda2hasdasd13asdasd05.2003@gmail.com",
+               // "password":"21223asdfadasd7dfadf3asd1305"
+               email2,password2
+          }
+          console.log(data);
+          try {
+            await axios({
+              method: 'POST',
+              url: URL,
+              data
+            }).then((res) => {
+              console.log(res.data);
+              if(res.data.success == "true"){
+               console.log("success");
+                    router.push('/');
               }
             });
           } 
@@ -32,6 +64,15 @@ const Login = ()=>{
           }
      }
      const URL = "https://web-production-4516.up.railway.app/register/";
+     const URL2 = "https://web-production-4516.up.railway.app/login/";
+     const handleClick = (e) => {
+          e.preventDefault();
+          fetchData(URL);
+     }
+     const handleClick2 = (e) => {
+          e.preventDefault();
+          fetchData(URL2);
+     }
     React.useEffect(() => {
 
         const signUpButton = document.getElementById('signUp') as HTMLButtonElement;  
@@ -66,10 +107,10 @@ const Login = ()=>{
                                               <a href="#" className="social"><FcGoogle fontSize={30}/></a>
                                          </div>
                                          <span>or use your email for registration</span>
-                                         <input type="text" placeholder="Name" />
-                                         <input type="email" placeholder="Email" />
-                                         <input type="password" placeholder="Password" />
-                                         <button className="btn" onClick={()=> fetchData(URL)}>Sign Up</button>
+                                         <input type="text" placeholder="Name" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                                         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                         <button className="btn" onClick={handleClick}>Sign Up</button>
                                     </form>
                                </div>
                                <div className="form-container sign-in-container">
@@ -81,12 +122,11 @@ const Login = ()=>{
                                               {/* <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a> */}
                                          </div>
                                          <span>or use your account</span>
-                                         <input type="email" placeholder="Email" />
-                                         <input type="password" placeholder="Password" />
+                                         <input type="email" placeholder="Email" value={email2} onChange={(e) => setEmail2(e.target.value)}/>
+                                         <input type="password" placeholder="Password" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
                                          <a href="#">Forgot your password?</a>
-                                         <button className="btn" type="submit" onClick={() => {
-
-                                         }}>Sign In</button>
+                                         <button className="btn" type="submit" onClick={handleClick2
+                                         }>Sign In</button>
                                     </form>
                                </div>
                                <div className="overlay-container">
