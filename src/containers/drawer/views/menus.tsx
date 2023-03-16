@@ -13,6 +13,7 @@ import {
   Instagram,
   Linkedin,
 } from 'assets/icons/social-icons';
+import { BsDisplay } from 'react-icons/bs';
 
 let isUserLogin = false;
 const menus = [
@@ -96,7 +97,7 @@ export default function DrawerMenu() {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-500 h-full">
         <div className="w-full h-90px bg-gray-100 flex justify-start items-center relative px-30px flex-shrink-0">
           <Link href="/">
             <a className="flex" onClick={hideMenu}>
@@ -145,6 +146,10 @@ export default function DrawerMenu() {
                 }
               </ActiveLink>
             ))}
+          </div>
+          <div className="oracleLogin" style={{marginTop:"-2rem",marginLeft:"1.9rem",marginRight:"1.9rem"}}>
+            <button style={{width:"20rem",padding:"0.6rem"}} className="text-white  bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              Join as a Oracle</button>
           </div>
         </Scrollbar>
 

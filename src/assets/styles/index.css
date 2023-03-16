@@ -49,7 +49,7 @@ h6 {
   @apply text-13px;
 }
 
-input[type='search'],
+input[type="search"],
 input,
 button {
   -webkit-appearance: none;
@@ -91,7 +91,7 @@ button {
 }
 
 .menu-item.active:before {
-  content: '';
+  content: "";
   width: 3px;
   height: 100%;
   display: flex;
@@ -207,7 +207,15 @@ button {
   left: 0;
   transform: translate(-450px, 0);
 }
-
+.cardbox {
+  border-radius: 50px;
+  background: #ffffff;
+  /* border-radius: 10px solid grey; */
+  /* box-shadow:  20px 20px 60px #d5d5d5,
+             -20px -20px 60px #ebebeb; */
+  /* box-shadow: 20px 10px 60px #bebebe, -20px -10px 60px #ffffff; */
+  
+}
 .drawer-cart.open,
 .drawer-menu.open {
   transform: translate(0, 0);
@@ -237,7 +245,7 @@ button {
 
 /* About Us */
 .page-title:after {
-  content: '';
+  content: "";
   position: relative;
   bottom: -5px;
   left: 0;
