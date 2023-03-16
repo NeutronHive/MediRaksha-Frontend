@@ -22,7 +22,7 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({ item, onClick }) => {
   return (
     <div className={ItemCardBase} onClick={onClick} >
-      <div className={ItemCardImage}>
+      <div className={ItemCardImage }>
         <img
           className="object-cover"
           src={item.image}
@@ -33,11 +33,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onClick }) => {
       </div>
 
       <div className={ItemCardContent} style={{marginLeft:"2rem",marginBottom:"2rem"}}>
-        <span className={ItemCardPrice}>
+        <span className={ItemCardPrice} style={{marginBottom:"0"}}>
           {CURRENCY}
           {item.price}
         </span>
-        <span className="text-13px">{item.name}</span>
+        <span className=" font-bold text-18px" style={{marginTop:"0"}}>{item.name}</span>
       </div>
     </div>
   );

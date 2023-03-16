@@ -101,9 +101,9 @@ export const CTAContent =
 // ----------
 // Item Card .... Height uthay dite hobe image theke
 // ----------
-export const ItemCardBase = 'w-full flex flex-col items-start cursor-pointer cardbox';
+export const ItemCardBase = 'w-full flex flex-col items-start cursor-pointer  cartImageTransform border border-black';
 export const ItemCardImage =
-  'flex justify-center items-center w-full rounded overflow-hidden';
+  'flex justify-center items-center w-full rounded overflow-hidden  h-64';
 export const ItemCardContent = 'flex flex-col items-start mt-3';
 export const ItemCardPrice = 'font-semibold text-gray-900 mb-2 text-16px';
 

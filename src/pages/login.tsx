@@ -1,9 +1,39 @@
 import React from "react";
 import {BsFacebook} from 'react-icons/bs'
 import {FcGoogle} from 'react-icons/fc';
-     
+import axios from "axios";  
+// import { useRouter } from 'next/router';
+
+
+
 const Login = ()=>{
+     // const router = useRouter();   
+     const fetchData = async (URL) => {
+          const data={
+               "username":"Prajwal2 Shah",
+               "email":"prajwalsha2h.2003@gmail.com",
+               "password":"2122373"
+          }
+          try {
+            await axios({
+              method: 'POST',
+              url: URL,
+              data
+            }).then((res) => {
+              console.log(res.data);
+              if(res.data.success == "true"){
+               console.log("success");
+                    // router.push('/');
+              }
+            });
+          } 
+          catch (err) {
+            console.log(err)
+          }
+     }
+     const URL = "https://web-production-4516.up.railway.app/register/";
     React.useEffect(() => {
+
         const signUpButton = document.getElementById('signUp') as HTMLButtonElement;  
         const signInButton = document.getElementById('signIn') as HTMLButtonElement;  
         const container = document.getElementById('container') as HTMLDivElement;  
@@ -39,7 +69,7 @@ const Login = ()=>{
                                          <input type="text" placeholder="Name" />
                                          <input type="email" placeholder="Email" />
                                          <input type="password" placeholder="Password" />
-                                         <button className="btn">Sign Up</button>
+                                         <button className="btn" onClick={()=> fetchData(URL)}>Sign Up</button>
                                     </form>
                                </div>
                                <div className="form-container sign-in-container">

@@ -39,7 +39,7 @@ const Products = React.forwardRef(
     return (
       <div className="w-full py-10" ref={ref}>
         {searchableItems.length ? (
-          <div className="grid grid-cols-2 col-gap-3 row-gap-6 md:grid-cols-3 md:col-gap-4 md:row-gap-8 lg:grid-cols-4 lg:col-gap-4 lg:row-gap-10 xxl:grid-cols-5 xxl:col-gap-4 xxl:row-gap-12 2xxl:grid-cols-7 2xxl:col-gap-5 2xxl:row-gap-12">
+          <div className="grid grid-cols-2  col-gap-3 row-gap-6 md:grid-cols-3 md:col-gap-4 md:row-gap-8 lg:grid-cols-4 lg:col-gap-4 lg:row-gap-10 xxl:grid-cols-5 xxl:col-gap-4 xxl:row-gap-12 2xxl:grid-cols-7 2xxl:col-gap-5 2xxl:row-gap-12">
             {searchableItems.map((item) => (
               <ItemCard
                 key={item.id}

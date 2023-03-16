@@ -261,5 +261,13 @@ button {
   display: flex;
 }
 
+.cartImageTransform{
+  border-radius: 8px;
+  height: 20rem;
+  transition: all 0.5s;
+}
+.cartImageTransform:hover{
+  -webkit-transform: scale(1.1,1.1);
+}
 /* Tailwind Utils */
 @tailwind utilities;

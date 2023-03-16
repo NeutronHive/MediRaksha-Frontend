@@ -8,10 +8,17 @@ import HowItWorks from 'containers/how-it-works';
 import { useRefScroll } from 'helpers/use-ref-scroll';
 import { useSearch } from 'contexts/search/use-search';
 import axios from 'axios';
+// const Web3 = require('web3');
+
 
 
 
 export default function Home({ products }) {
+  // const provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/your-infura-project-id');
+  // const web3 = new Web3(provider);
+  // const contractAddress = "0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B";
+  // const abi = " 0x849921f8f71200097f7f81762d9765a11b6e56075997741366b9a491ce43ce27"
+  // const contract = new web3.eth.Contract(abi, contractAddress);
   const [productz,setProductz]=useState([]);
   const fetchData = async (URL) => {
     try {
@@ -93,6 +100,7 @@ export default function Home({ products }) {
 //     "substance" : "calcium"
 //     }
 // ];
+
   const { elRef, scroll } = useRefScroll({
     percentOfElement: 0,
     percentOfContainer: 0,
