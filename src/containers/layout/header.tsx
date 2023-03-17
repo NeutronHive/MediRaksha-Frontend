@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext,useEffect,useState } from 'react';
 import Link from 'next/link';
 import PhoneIcon from 'assets/icons/phone';
 import CartIcon from 'assets/icons/cart-icon';
@@ -8,8 +8,12 @@ import { DrawerContext } from 'contexts/drawer/drawer.provider';
 import { useCart } from 'contexts/cart/cart.provider';
 import { useRouter } from 'next/router';
 import MediRaksha from './medirakhalogo.png'
+import Button from 'components/button';
+import axios from 'axios';
+import {BsFillPlusSquareFill} from 'react-icons/bs';
 
 export default function Header() {
+  const [role,setRole] = useState('user');
   const router = useRouter();
   const { dispatch }: any = useContext(DrawerContext);
   const { itemsCount } = useCart();
@@ -22,7 +26,30 @@ export default function Header() {
       },
     });
   };
-
+  const fetchData2 = async (URL2) => {
+    try {
+      await axios({
+        method: 'GET',
+        url: URL2,
+      }).then((res) => {
+        console.log(res.data.finalRole);
+        
+        console.log("hello1");
+        setRole(res.data.finalRole)
+        console.log("hello2");
+        
+        console.log("USER" + role);
+      //   setRole(res.data.finalRole);
+      });
+    } 
+    catch (err){
+      console.log(err)
+    }
+  }
+  useEffect(()=>{
+    const URL2 = "https://medirole-api-production.up.railway.app/api/v1/users/getrole";
+    fetchData2(URL2);
+  })
   const showCart = () => {
     dispatch({
       type: 'SLIDE_CART',
@@ -37,7 +64,10 @@ export default function Header() {
       },
     });
   };
-
+  const handleClick=(e)=>{
+    e.preventDefault();
+    window.location.replace('https://mediform.vercel.app/')
+  }
   const isHome = router.pathname === '/';
 
   return (
@@ -68,6 +98,7 @@ export default function Header() {
       </div>
 
       <div className="hidden items-center text-gray-900 mr-10 flex-shrink-0 lg:flex">
+        {role === 'admin'? <Button onClick={handleClick} style={{padding:'10px', marginRight:'3rem', backgroundColor:'green'}}><BsFillPlusSquareFill  fontSize={"2rem"} /><pre>  Add Item</pre></Button>:<p></p>}
         <PhoneIcon />
         <span className="font-semibold text-base text-14px ml-3">
           +91 9822798400

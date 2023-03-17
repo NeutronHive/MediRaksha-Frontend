@@ -8,6 +8,7 @@ import HowItWorks from 'containers/how-it-works';
 import { useRefScroll } from 'helpers/use-ref-scroll';
 import { useSearch } from 'contexts/search/use-search';
 import axios from 'axios';
+import Favi from './favicon.jpg'
 // const Web3 = require('web3');
 
 
@@ -20,6 +21,7 @@ export default function Home({ products }) {
   // const abi = " 0x849921f8f71200097f7f81762d9765a11b6e56075997741366b9a491ce43ce27"
   // const contract = new web3.eth.Contract(abi, contractAddress);
   const [productz,setProductz]=useState([]);
+  
   const fetchData = async (URL) => {
     try {
       await axios({
@@ -34,9 +36,30 @@ export default function Home({ products }) {
       console.log(err)
     }
   }
-  const URL = "https://web-production-4516.up.railway.app/api/medicines/";
+  const fetchData2 = async (URL2) => {
+    try {
+
+      await axios({
+        method: 'GET',
+        url: URL2,
+      }).then((res) => {
+        console.log(res.data);
+     
+       
+        
+        // setRole(res.data.type);
+        // console.log(role);
+      });
+    } 
+    catch (err){
+      console.log(err)
+    }
+  }
+  const URL = "http://localhost:8000/api/medicines/";
+  const URL2 = "https://medirole-api-production.up.railway.app/api/v1/users/getrole";
   useEffect(()=>{
     fetchData(URL);
+    fetchData2(URL2)
   },[])
 //   const productz = [
 //     {
@@ -119,6 +142,7 @@ export default function Home({ products }) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta name="Description" content="Put your description here." />
+        <link rel="shortcut icon" href={Favi} type="image/x-icon" />
         <title>Medi-Raksha</title>
       </Head>
 
