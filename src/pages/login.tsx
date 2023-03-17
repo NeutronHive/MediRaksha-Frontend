@@ -84,8 +84,8 @@ const Login = ()=>{
             console.log(err)
           }
      }
-     const URL = "http://localhost:8000/register/";
-     const URL2 = "http://localhost:8000/login/";
+     const URL = "https://web-production-4516.up.railway.app/register/";
+     const URL2 = "https://web-production-4516.up.railway.app/login/";
      const handleClick = (e) => {
           e.preventDefault();
           fetchData(URL);

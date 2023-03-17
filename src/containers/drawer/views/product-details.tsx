@@ -91,6 +91,7 @@ export default function ProductDetails() {
           <div className="flex flex-col items-start mb-4">
             <span className="mb-3" style={{fontSize:"2rem"}}>{state.item.name}</span> 
             <span className="text-gray-900 text-30px mb-2 font-semibold" >
+
               {CURRENCY}
               {state.item.price}
             </span>
@@ -133,7 +134,6 @@ export default function ProductDetails() {
               {CURRENCY}
               {state.item.price}
             </span>
-            <span className="mb-3">{state.item.name}</span>
             <p className="flex items-center mb-5">
               <span className=" text-gray-500 text-11px capitalize">
                 {state.item.type}
@@ -143,6 +143,11 @@ export default function ProductDetails() {
                 {state.item.quantity}{' '}
                 {state.item.quantity > 1 ? 'pieces' : 'piece'}
               </span>
+              <div>
+            <p>Raksha Value ✅</p>  
+            <span className="mb-3" style={{fontSize:"2rem"}} >{state.item.raksha_value}</span>
+
+              </div>
             </p>
 
             {visibility === true ? (
@@ -219,6 +224,6 @@ export default function ProductDetails() {
       </div>}
       
       
-    </div>
-  );
+   </div>
+ );
 }

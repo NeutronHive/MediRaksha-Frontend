@@ -55,7 +55,7 @@ export default function Home({ products }) {
       console.log(err)
     }
   }
-  const URL = "http://localhost:8000/api/medicines/";
+  const URL = "https://web-production-4516.up.railway.app/api/medicines/";
   const URL2 = "https://medirole-api-production.up.railway.app/api/v1/users/getrole";
   useEffect(()=>{
     fetchData(URL);

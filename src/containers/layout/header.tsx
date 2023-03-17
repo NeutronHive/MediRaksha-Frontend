@@ -49,7 +49,7 @@ export default function Header() {
   useEffect(()=>{
     const URL2 = "https://medirole-api-production.up.railway.app/api/v1/users/getrole";
     fetchData2(URL2);
-  })
+  },[])
   const showCart = () => {
     dispatch({
       type: 'SLIDE_CART',
