@@ -12,7 +12,28 @@ const Login = ()=>{
      const [email,setEmail]=useState('');
      const [password,setPassword]=useState('');     
      const [email2,setEmail2]=useState('');
-     const [password2,setPassword2]=useState('');     
+     const [password2,setPassword2]=useState('');  
+     const update=async (URL)=>{
+          const data={
+               username,
+               status:'true'
+          }
+          console.log(data);
+          try {
+               await axios({
+                 method: 'POST',
+                 url: URL,
+                 data
+               }).then((res) => {
+                 console.log(res.data);
+               
+               });
+             } 
+             catch (err) {
+               console.log(err)
+             } 
+     
+         }   
      const fetchData = async (URL) => {
           const data={
                // "username":"Prajwaasdasdsadsdfasdasdlasdsad1305 Shah",
@@ -29,7 +50,7 @@ const Login = ()=>{
             }).then((res) => {
               console.log(res.data);
               if(res.data.success == "true"){
-               console.log("success");
+                    console.log("success");
                     router.push('/');
               }
             });
@@ -38,24 +59,24 @@ const Login = ()=>{
             console.log(err)
           }
      }
-     const fetchData2 = async (URL) => {
+     const fetchData2 = async (URL2) => {
           const data={
                // "username":"Prajwaasdasdsadsdfasdasdlasdsad1305 Shah",
                // "email":"prajwalshsdadsda2hasdasd13asdasd05.2003@gmail.com",
                // "password":"21223asdfadasd7dfadf3asd1305"
-               email2,password2
+               username:email2,password:password2
           }
           console.log(data);
           try {
             await axios({
               method: 'POST',
-              url: URL,
+              url: URL2,
               data
             }).then((res) => {
               console.log(res.data);
               if(res.data.success == "true"){
                console.log("success");
-                    router.push('/');
+               router.push('/');
               }
             });
           } 
@@ -63,16 +84,19 @@ const Login = ()=>{
             console.log(err)
           }
      }
-     const URL = "https://web-production-4516.up.railway.app/register/";
-     const URL2 = "https://web-production-4516.up.railway.app/login/";
+     const URL = "http://localhost:8000/register/";
+     const URL2 = "http://localhost:8000/login/";
      const handleClick = (e) => {
           e.preventDefault();
           fetchData(URL);
      }
      const handleClick2 = (e) => {
           e.preventDefault();
-          fetchData(URL2);
+          const url='https://medirole-api-production.up.railway.app/api/v1/users/update';
+          update(url);
+          fetchData2(URL2);
      }
+
     React.useEffect(() => {
 
         const signUpButton = document.getElementById('signUp') as HTMLButtonElement;  
@@ -122,7 +146,7 @@ const Login = ()=>{
                                               {/* <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a> */}
                                          </div>
                                          <span>or use your account</span>
-                                         <input type="email" placeholder="Email" value={email2} onChange={(e) => setEmail2(e.target.value)}/>
+                                         <input type="text" placeholder="Username" value={email2} onChange={(e) => setEmail2(e.target.value)}/>
                                          <input type="password" placeholder="Password" value={password2} onChange={(e) => setPassword2(e.target.value)}/>
                                          <a href="#">Forgot your password?</a>
                                          <button className="btn" type="submit" onClick={handleClick2
